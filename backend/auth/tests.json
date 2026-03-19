@@ -1,0 +1,12 @@
+{
+  "tests": [
+    {
+      "name": "GET /vk/url — возвращает ссылку авторизации VK",
+      "method": "GET",
+      "path": "/vk/url?redirect_uri=https%3A%2F%2Fexample.com",
+      "expectedStatus": 200,
+      "bodyMatcher": "partial",
+      "expectedBody": {"url": "string"}
+    }
+  ]
+}

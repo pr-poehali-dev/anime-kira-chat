@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>VK Auth...</title></head>
+<body style="background:#080B14;color:#9B5DE5;font-family:sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;">
+<p>Авторизация через VK...</p>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const code = params.get('code');
+  const error = params.get('error');
+  if (code) {
+    if (window.opener) {
+      window.opener.postMessage({ type: 'vk_auth_callback', code }, '*');
+    }
+  } else {
+    if (window.opener) {
+      window.opener.postMessage({ type: 'vk_auth_callback', error: error || 'cancelled' }, '*');
+    }
+  }
+  setTimeout(() => window.close(), 500);
+</script>
+</body>
+</html>
